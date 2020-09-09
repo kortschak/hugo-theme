@@ -109,7 +109,7 @@
     {{ with $data.appointment_url }}
     <li>
       <i class="fa-li fas fa-calendar-check fa-2x" aria-hidden="true"></i>
-      <a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "book_appointment" | default "Book an appointment" }}</a>
+      <a href="{{ . }}">{{ i18n "book_appointment" | default "Book an appointment" }}</a>
     </li>
     {{ end }}
 
@@ -122,15 +122,12 @@
     {{ end }}
     {{ $link := .link }}
     {{ $scheme := (urls.Parse $link).Scheme }}
-    {{ $target := "" }}
     {{ if not $scheme }}
       {{ $link = .link | relLangURL }}
-    {{ else if in (slice "http" "https") $scheme }}
-      {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
     {{ end }}
     <li>
       <i class="fa-li {{ $pack }} {{ $pack_prefix }}-{{ .icon }} fa-2x" aria-hidden="true"></i>
-      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>{{.name|markdownify|emojify|safeHTML}}</a>
+      <a href="{{ $link | safeURL }}">{{.name|markdownify|emojify|safeHTML}}</a>
     </li>
     {{ end }}
 
