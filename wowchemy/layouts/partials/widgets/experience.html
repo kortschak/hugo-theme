@@ -34,7 +34,7 @@
           {{ if not $svg_icon }}{{ errorf "Brand logo not found at `assets/media/icons/brands/%s.svg`" .company_logo }}{{end}}
           <div class="d-flex align-content-start">
             <div class="mr-2 mb-2">
-              {{- with .company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end -}}
+              {{- with .company_url}}<a href="{{.}}">{{end -}}
               <img src="{{ $svg_icon.RelPermalink }}" width="56px" height="56px" alt="{{.company | plainify}}">
               {{- with .company_url}}</a>{{end -}}
             </div>
@@ -43,7 +43,7 @@
 
               <div class="section-subheading card-title exp-title text-muted my-0">{{.title | markdownify | emojify}}</div>
               <div class="section-subheading card-title exp-company text-muted my-0">
-                {{- with .company_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end}}{{.company | markdownify | emojify}}{{with .company_url}}</a>{{end -}}
+                {{- with .company_url}}<a href="{{.}}">{{end}}{{.company | markdownify | emojify}}{{with .company_url}}</a>{{end -}}
               </div>
               <div class="text-muted exp-meta">
                 {{ (time .date_start).Format ($page.Params.date_format | default "January 2006") }} –

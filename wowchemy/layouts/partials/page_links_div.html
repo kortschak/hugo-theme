@@ -5,7 +5,7 @@
 {{ if $has_attachments | or .Params.external_link }}
 <div class="btn-links mb-3">
   {{ with .Params.external_link }}
-  <a class="btn btn-outline-primary my-1" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "open_project_site" }}</a>
+  <a class="btn btn-outline-primary my-1" href="{{ . }}">{{ i18n "open_project_site" }}</a>
   {{ end }}
   {{ partial "page_links" (dict "page" . "is_list" 0) }}
 </div>

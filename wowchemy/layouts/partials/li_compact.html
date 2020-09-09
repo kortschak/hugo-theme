@@ -3,10 +3,8 @@
 {{/* Dynamic view adjusts to content type. */}}
 {{ $show_authors_only := false }}{{/* Show authors only or full metadata? */}}
 {{ $link := $item.RelPermalink }}
-{{ $target := "" }}
 {{ if $item.Params.external_link }}
   {{ $link = $item.Params.external_link }}
-  {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
 {{ end }}
 {{ if eq $item.Type "event" }}
   {{ $show_authors_only = true }}
@@ -32,11 +30,11 @@
   <div class="media-body">
 
     <div class="section-subheading article-title mb-0 mt-0">
-      <a href="{{$link}}" {{ $target | safeHTMLAttr }}>{{ $item.Title }}</a>
+      <a href="{{$link}}">{{ $item.Title }}</a>
     </div>
 
     {{ with $summary }}
-    <a href="{{ $link }}" {{ $target | safeHTMLAttr }} class="summary-link">
+    <a href="{{ $link }}" class="summary-link">
       <div class="article-style">
         {{.}}
       </div>
@@ -77,7 +75,7 @@
     {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
     {{ with $resource }}
     {{ $image := .Resize "150x" }}
-    <a href="{{$link}}" {{ $target | safeHTMLAttr }}>
+    <a href="{{$link}}">
       <img src="{{ $image.RelPermalink }}" alt="{{ $item.Title }}" loading="lazy">
     </a>
     {{end}}

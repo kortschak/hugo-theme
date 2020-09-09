@@ -7,14 +7,11 @@
     {{ end }}
     {{ $link := .link }}
     {{ $scheme := (urls.Parse $link).Scheme }}
-    {{ $target := "" }}
     {{ if not $scheme }}
       {{ $link = .link | relLangURL }}
-    {{ else if in (slice "http" "https") $scheme }}
-      {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
     {{ end }}
     <li>
-      <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
+      <a href="{{ $link | safeURL }}">
         <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }}"></i>
       </a>
     </li>

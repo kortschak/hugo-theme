@@ -14,19 +14,19 @@
         {{- if $svg_icon }}
         <div class="d-flex align-content-start">
           <div class="mr-2 mb-2">
-            {{- with .organization_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end -}}
+            {{- with .organization_url}}<a href="{{.}}">{{end -}}
             <img src="{{ $svg_icon.RelPermalink }}" width="56px" height="56px" alt="{{.organization | plainify}}">
             {{- with .organization_url}}</a>{{end -}}
           </div>
           <div>
         {{ end }}
 
-            {{- with .url -}}<a href="{{.}}" target="_blank" rel="noopener">{{- end -}}
+            {{- with .url -}}<a href="{{.}}">{{- end -}}
             <div class="section-subheading card-title exp-title text-muted my-0">{{.title | markdownify | emojify}}</div>
             {{- with .url -}}</a>{{- end -}}
 
             <div class="card-subtitle my-0 article-metadata">
-              {{- with .organization_url}}<a href="{{.}}" target="_blank" rel="noopener">{{end -}}
+              {{- with .organization_url}}<a href="{{.}}">{{end -}}
               {{- .organization | markdownify | emojify -}}
               {{- with .organization_url}}</a>{{end -}}
 
@@ -48,7 +48,7 @@
         {{end}}
 
         {{ with .certificate_url }}
-          <a class="card-link" href="{{.}}" target="_blank" rel="noopener">
+          <a class="card-link" href="{{.}}">
             {{ i18n "see_certificate" | default "See certificate" }}
           </a>
         {{ end }}
