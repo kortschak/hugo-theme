@@ -24,14 +24,7 @@
 
 {{/* Get external link or relative internal link. */}}
 {{ $link := .link }}
-{{ $target := "" }}
 {{ $scheme := (urls.Parse $link).Scheme }}
-{{ if not $scheme }}
-  {{ $link = .link | relLangURL }}
-{{ else if in (slice "http" "https") $scheme }}
-  {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-{{ end }}
 {{ $scr.SetInMap "social_link" "link" $link }}
-{{ $scr.SetInMap "social_link" "target" $target }}
 
 {{ return $scr.Get "social_link" }}
